@@ -20,8 +20,9 @@ dependencies {
 
     implementation("org.json:json:20240303")
 
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("io.cucumber:cucumber-java:7.20.1")
+    testImplementation("io.cucumber:cucumber-junit:7.20.1")
+    testImplementation("org.junit.vintage:junit-vintage-engine:5.11.3")
 }
 
 tasks.test {
