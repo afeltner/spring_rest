@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.example.dao.Person;
 import org.junit.Assert;
 
@@ -31,7 +31,7 @@ public class StepDefinitions {
     /**
      * GetPeople will hit the GET /people endpoint to return a list of all Person's in the FakeDataStore.
      */
-    @Given("^GET People$")
+    @When("^GET People$")
     public void GetPeople() {
         HttpRequest request = HttpRequest.newBuilder(
                         URI.create(BASE_URL + PEOPLE_URL))
@@ -48,7 +48,7 @@ public class StepDefinitions {
     /**
      * GetPerson will hit the GET /person/{name} endpoint to return an individual Person from the FakeDataStore.
      */
-    @Given("^GET a person (.*)$")
+    @When("^GET a person (.*)$")
     public void GetPerson(String name) {
         HttpRequest request = HttpRequest.newBuilder(
                         URI.create(BASE_URL + PERSON_URL + "/" + name))
@@ -65,7 +65,7 @@ public class StepDefinitions {
     /**
      * GetPerson will hit the POST /person endpoint to add a Person to the FakeDataStore.
      */
-    @Given("^POST a person")
+    @When("^POST a person")
     public void GetPerson(Person person) {
         ObjectMapper Obj = new ObjectMapper();
         try {
@@ -84,7 +84,7 @@ public class StepDefinitions {
     /**
      * DeletePerson will hit the DELETE /person/{name} endpoint to remove an individual Person from the FakeDataStore.
      */
-    @Given("^DELETE a person (.*)$")
+    @When("^DELETE a person (.*)$")
     public void DeletePerson(String name) {
         HttpRequest request = HttpRequest.newBuilder(
                         URI.create(BASE_URL + PERSON_URL + "/" + name))

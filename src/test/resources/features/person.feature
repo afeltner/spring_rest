@@ -1,9 +1,9 @@
 Feature: Person
-  CRUD operations for Person
+  CRUD operations for a Person
 
   #Scenario will hit the GET /people endpoint to get a list of all Person objects
   Scenario: List all people
-    Given GET People
+    When GET People
     Then I should get a response with status 200
     And I should get the following people
       | name   | about              | birthYear |
@@ -13,7 +13,7 @@ Feature: Person
 
   # Scenario will hit the GET /person/{name} endpoint to get one specific Person object
   Scenario: Get a person
-    Given GET a person Andrea
+    When GET a person Andrea
     Then I should get a response with status 200
     And I should get the following person
       | name   | about              | birthYear |
@@ -24,18 +24,18 @@ Feature: Person
   # It will then hit the DELETE /person endpoint to delete the Person
   # It will then hit the GET /people endpoint to verify that the list does not contain the deleted Person
   Scenario: Add a person and then delete the same person
-    Given POST a person
+    When POST a person
       | name  | about                | birthYear |
       | Elene | Elene likes puzzles. | 1936      |
     Then I should get a response with status 200
-    Given GET a person Elene
+    When GET a person Elene
     Then I should get a response with status 200
     And I should get the following person
       | name  | about                | birthYear |
       | Elene | Elene likes puzzles. | 1936      |
-    Given DELETE a person Elene
+    When DELETE a person Elene
     Then I should get a response with status 200
-    Given GET People
+    When GET People
     Then I should get a response with status 200
     And I should get the following people
       | name   | about              | birthYear |
